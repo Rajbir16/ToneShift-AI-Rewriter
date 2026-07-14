@@ -1,0 +1,14 @@
+- [ ] Create initial project scaffolding (app.py, package dirs)
+- [ ] Implement Groq client + connection test
+- [ ] Implement prompt builder
+- [ ] Implement rewrite engine
+- [ ] Implement PDF + DOCX parsers
+- [ ] Implement analysis (readability + plotly charts)
+- [ ] Implement exporters (TXT/DOCX/PDF)
+- [ ] Implement history storage
+- [ ] Implement audio (gTTS) playback
+- [ ] Build Streamlit UI with premium dark theme
+- [ ] Install dependencies and run `python -m streamlit run app.py`
+- [ ] Fix any import/runtime errors
+- [ ] Test flows: connection, rewrite, uploads, exports, history, voice
+

@@ -1,0 +1,29 @@
+[
+  {
+    "original_text": "Sample AI Document\nArtificial Intelligence is revolutionizing healthcare by assisting doctors in diagnosing diseases, predicting patient outcomes, and improving medical research. AI-powered systems analyze large amounts of medical data quickly and accurately, helping healthcare professionals make informed decisions. Although AI enhances efficiency, human expertise remains essential to ensure ethical and reliable patient care.",
+    "rewritten_text": "Artificial Intelligence is transforming healthcare by facilitating disease diagnosis, predicting patient outcomes, and enhancing medical research. AI-powered systems rapidly analyze extensive medical data, enabling healthcare professionals to make informed decisions. While AI boosts efficiency, human expertise remains crucial for ensuring ethical and reliable patient care.",
+    "audience": "Professional",
+    "tone": "Formal",
+    "target_length": 400,
+    "formality": 60,
+    "created_at": "2026-07-14T22:30:59.934276Z"
+  },
+  {
+    "original_text": "Sample AI Document\nArtificial Intelligence is revolutionizing healthcare by assisting doctors in diagnosing diseases, predicting patient outcomes, and improving medical research. AI-powered systems analyze large amounts of medical data quickly and accurately, helping healthcare professionals make informed decisions. Although AI enhances efficiency, human expertise remains essential to ensure ethical and reliable patient care.",
+    "rewritten_text": "Artificial Intelligence is transforming healthcare by facilitating disease diagnosis, predicting patient outcomes, and enhancing medical research. AI-powered systems rapidly analyze extensive medical data, enabling healthcare professionals to make informed decisions. While AI boosts efficiency, human expertise remains crucial for ensuring ethical and reliable patient care.",
+    "audience": "Professional",
+    "tone": "Formal",
+    "target_length": 400,
+    "formality": 60,
+    "created_at": "2026-07-14T22:51:24.436868Z"
+  },
+  {
+    "original_text": "Sample AI Document\nArtificial Intelligence is revolutionizing healthcare by assisting doctors in diagnosing diseases, predicting patient outcomes, and improving medical research. AI-powered systems analyze large amounts of medical data quickly and accurately, helping healthcare professionals make informed decisions. Although AI enhances efficiency, human expertise remains essential to ensure ethical and reliable patient care.",
+    "rewritten_text": "Artificial Intelligence is transforming healthcare by facilitating disease diagnosis, predicting patient outcomes, and enhancing medical research. AI systems rapidly analyze extensive medical data, enabling healthcare professionals to make informed decisions. While AI boosts efficiency, human expertise remains crucial for ensuring ethical and reliable patient care.",
+    "audience": "Professional",
+    "tone": "Formal",
+    "target_length": 400,
+    "formality": 60,
+    "created_at": "2026-07-14T23:23:50.277246Z"
+  }
+]
