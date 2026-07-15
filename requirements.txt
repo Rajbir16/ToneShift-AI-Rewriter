@@ -1,23 +1,19 @@
 streamlit==1.23.1
 
+python-dotenv>=1.0.1
 
-python-dotenv==0.15.0
-
-groq==0.6.0
+groq>=0.9.0
 
 PyPDF2==3.0.1
-python-docx==0.8.11
+python-docx>=1.1.2
 
 reportlab==4.2.2
-plotly==5.18.0
+plotly>=5.18.0
 
-gTTS==2.2.3
+gTTS>=2.5.1
 
 pandas==2.2.2
 
-
-
 readability-lxml==0.8.1
 
-lxml==5.2.2
-
+lxml>=5.2.2
