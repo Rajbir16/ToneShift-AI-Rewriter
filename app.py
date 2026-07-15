@@ -231,16 +231,18 @@ Rewrite • Analyze • Export • Voice
             st.audio(audio_bytes, format=mime)
 
     st.divider()
+
     hist_col1, hist_col2 = st.columns([3, 1])
+
     hist_col1.markdown(
-    "<h2 style='color:#FFFFFF;font-size:34px;font-weight:700;'>📜 History</h2>",
-    unsafe_allow_html=True,
-)
+        "<h2 style='color:#FFFFFF;font-size:34px;font-weight:700;'>📜 History</h2>",
+        unsafe_allow_html=True,
+    )
 
     hist = history.list()
 
     if hist:
-        if hist_col2.button("Clear All History", use_container_width=True, type="secondary"):
+        if hist_col2.button("Clear All History", use_container_width=True):
             history.clear()
             st.experimental_rerun()
 
@@ -250,39 +252,39 @@ Rewrite • Analyze • Export • Voice
         recent_history = list(reversed(hist))[:5]
 
         for i, item in enumerate(recent_history):
-            ts = datetime.fromisoformat(
-                item["created_at"].replace("Z", "+00:00")
-            ).strftime("%Y-%m-%d %H:%M")
+
+            try:
+                ts = datetime.fromisoformat(
+                    item["created_at"].replace("Z", "+00:00")
+                ).strftime("%Y-%m-%d %H:%M")
+            except:
+                ts = "Unknown"
 
             with st.expander(f"**{item['audience']} / {item['tone']}** at {ts}"):
 
                 st.markdown("### ✨ Rewritten")
-    st.code(item["rewritten_text"], language=None)
+                st.code(item["rewritten_text"], language=None)
 
-    st.markdown("### 📄 Original")
-    st.code(item["original_text"], language=None)
+                st.markdown("### 📄 Original")
+                st.code(item["original_text"], language=None)
 
+                btn_cols = st.columns(2)
 
-    btn_cols = st.columns(2)
-
-    if btn_cols[0].button(
+                if btn_cols[0].button(
                     "Restore",
                     key=f"restore_{i}",
                     use_container_width=True,
                 ):
                     st.session_state["input_text"] = item["original_text"]
                     st.session_state["rewritten_text"] = item["rewritten_text"]
-                    st.success("Restored text to input/output areas.")
+                    st.session_state["last_rewrite_timestamp"] = item["created_at"]
+                    st.success("Restored successfully.")
                     st.experimental_rerun()
 
-    if btn_cols[1].button(
+                if btn_cols[1].button(
                     "Delete",
                     key=f"delete_{i}",
                     use_container_width=True,
                 ):
                     history.delete(item["created_at"])
                     st.experimental_rerun()
-
-
-if __name__ == "__main__":
-    main()
