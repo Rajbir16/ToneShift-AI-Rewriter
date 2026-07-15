@@ -8,28 +8,65 @@ from reportlab.lib.enums import TA_LEFT
 
 def export_pdf(data: dict) -> bytes:
     buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter, leftMargin=50, rightMargin=50, topMargin=50, bottomMargin=50)
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=letter,
+        leftMargin=50,
+        rightMargin=50,
+        topMargin=50,
+        bottomMargin=50,
+    )
+
     styles = getSampleStyleSheet()
-    styles.add(ParagraphStyle(name='pre', fontName='Courier', wordWrap='CJK', alignment=TA_LEFT))
+    styles.add(
+        ParagraphStyle(
+            name="pre",
+            fontName="Courier",
+            wordWrap="CJK",
+            alignment=TA_LEFT,
+        )
+    )
+
     story = []
 
-    ts = datetime.fromisoformat(data["timestamp"].replace("Z", "+00:00")).strftime("%Y-%m-%d %H:%M:%S UTC")
+    # Safe timestamp
+    timestamp = data.get("timestamp", "")
+
+    if timestamp:
+        try:
+            ts = datetime.fromisoformat(
+                timestamp.replace("Z", "+00:00")
+            ).strftime("%Y-%m-%d %H:%M:%S UTC")
+        except ValueError:
+            ts = "Unknown"
+    else:
+        ts = "Unknown"
 
     # Metadata
-    story.append(Paragraph("ToneShift Rewrite", styles['h1']))
-    story.append(Paragraph(f"Date: {ts}", styles['Normal']))
-    story.append(Paragraph(f"Audience: {data['audience']}", styles['Normal']))
-    story.append(Paragraph(f"Tone: {data['tone']}", styles['Normal']))
+    story.append(Paragraph("ToneShift Rewrite", styles["h1"]))
+    story.append(Paragraph(f"Date: {ts}", styles["Normal"]))
+    story.append(Paragraph(f"Audience: {data.get('audience', '')}", styles["Normal"]))
+    story.append(Paragraph(f"Tone: {data.get('tone', '')}", styles["Normal"]))
     story.append(Spacer(1, 24))
 
     # Original Text
-    story.append(Paragraph("Original Text", styles['h2']))
-    story.append(Paragraph(data['original_text'].replace('\n', '<br/>'), styles['pre']))
+    story.append(Paragraph("Original Text", styles["h2"]))
+    story.append(
+        Paragraph(
+            data.get("original_text", "").replace("\n", "<br/>"),
+            styles["pre"],
+        )
+    )
     story.append(Spacer(1, 24))
 
     # Rewritten Text
-    story.append(Paragraph("Rewritten Text", styles['h2']))
-    story.append(Paragraph(data['rewritten_text'].replace('\n', '<br/>'), styles['pre']))
+    story.append(Paragraph("Rewritten Text", styles["h2"]))
+    story.append(
+        Paragraph(
+            data.get("rewritten_text", "").replace("\n", "<br/>"),
+            styles["pre"],
+        )
+    )
 
     doc.build(story)
     return buffer.getvalue()
