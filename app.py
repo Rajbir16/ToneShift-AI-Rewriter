@@ -273,18 +273,17 @@ Rewrite • Analyze • Export • Voice
                 btn_cols = st.columns(2)
 
                 if btn_cols[0].button(
-                    "Restore (Coming Soon)",
-                     disabled=True,
+                    "Restore",
                     key=f"restore_{i}",
                     use_container_width=True,
                 ):
-                    # st.session_state["input_text"] = item["original_text"]
-                    # st.session_state["rewritten_text"] = item["rewritten_text"]
-                    # st.session_state["last_rewrite_timestamp"] = item["created_at"]
-                    # st.success("Restored successfully.")
-                    # st.experimental_rerun()
+                    st.session_state["input_text"] = item["original_text"]
+                    st.session_state["rewritten_text"] = item["rewritten_text"]
+                    st.session_state["last_rewrite_timestamp"] = item["created_at"]
+                    st.success("Restored successfully.")
+                    st.experimental_rerun()
 
-                 if btn_cols[1].button(
+                if btn_cols[1].button(
                     "Delete",
                     key=f"delete_{i}",
                     use_container_width=True,
@@ -292,5 +291,5 @@ Rewrite • Analyze • Export • Voice
                     history.delete(item["created_at"])
                     st.experimental_rerun()
 
-            if __name__ == "__main__":
-                        main()
+if __name__ == "__main__":
+     main()
